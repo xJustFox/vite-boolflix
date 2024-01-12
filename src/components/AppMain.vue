@@ -19,15 +19,19 @@ export default {
 </script>
 
 <template lang="">
-    <main class="py-4">
-        <div class="container-fluid px-4">
+    <main class="py-5">
+        <div class="container-fluid px-4 ">
             <div v-if="!store.flagSearch">
-                <div class="row flex-wrap gap-2 ">
-                    <div class="col-12">MOVIES</div>
+                <div class="my-row flex-wrap">
+                    <div class="col-12">
+                        <h1 class="text-white m-0">MOVIES</h1>
+                    </div>
                     <AppSingleMovie v-for="(obj, index) in store.moviesSearch" :key="index" :movie="obj"/>
                 </div>
-                <div class="row flex-wrap gap-2 ">
-                    <div class="col-12 mt-5 ">TV SERIES</div>
+                <div class="my-row flex-wrap">
+                    <div class="col-12 mt-5 ">
+                        <h1 class="text-white m-0">TV SERIES</h1>
+                    </div>
                     <AppSingleTv v-for="(obj, index) in store.tvSearch" :key="index" :tv="obj"/>
                 </div>
             </div>

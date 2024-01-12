@@ -56,12 +56,18 @@ export default {
 </script>
 
 <template lang="">
-    <div class="col-2 my-br">
-        <div><img class="posterImg" :src="getImg" alt=""></div>
-        <div><span class="fw-bold ">titolo:</span> {{tv.name}}</div>
-        <div><span class="fw-bold ">titolo originale:</span> {{tv.original_name}}</div>
-        <div><span class="fw-bold ">lingua originale: </span> <img class="" :src="getUrlFlag"></div>
-        <AppStar :vote="tv.vote_average" />
+    <div class="my-col">
+        <div class="my-card">
+            <div class="front">
+                <img class="posterImg" :src="getImg" alt="">
+            </div>
+            <div class="back cardText">
+                <div><span class="fw-bold ">titolo:</span> {{tv.name}}</div>
+                <div><span class="fw-bold ">titolo originale:</span> {{tv.original_name}}</div>
+                <div><span class="fw-bold ">lingua originale: </span> <img class="" :src="getUrlFlag"></div>
+                <AppStar :vote="tv.vote_average" />
+            </div>
+        </div>
     </div>
 </template>
 

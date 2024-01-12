@@ -19,16 +19,58 @@ body{
         }
     }
     main{
-        .posterImg{
-            width: 100%;
+        min-height: calc(100vh - 68px);
+        background-color: #201f1f;
+        
+        .my-row{
+            display: flex;
+            gap: 15px 10px;
+            
+            .my-col{
+                height: 400px;
+                width: calc(100% / 6 - 10px);
+                
+                &:hover > .my-card{
+                    cursor: pointer;
+                    transform: rotateY(180deg);
+                }
+                .my-card{
+                    width: 100%;
+                    height: 100%;
+                    border: 1px solid white;
+                    position: relative;
+                    transition: transform 1500ms;
+                    transform-style: preserve-3d;
+                    
+                    .front,
+                    .back{
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        bottom: 0;
+                        overflow: hidden;
+                        backface-visibility: hidden;
+                        .posterImg{
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                    
+                    .back{
+                        background-color: #191919c2;
+                        transform: rotateY(180deg);
+                        color: white;
+                    }
+                    .cardText{
+                        padding-left: 5px;
+                    }
+                }
+            }
         }
+        
     }
 }
 
 input{
     outline: none;
-}
-
-.my-br{
-    border: 1px solid;
 }
