@@ -13,9 +13,10 @@ export default {
 </script>
 
 <template lang="">
-    <Header>
-        
-    </Header>
+    <header>
+        <input class=" form" placeholders="Movies name" v-model="store.searchText">
+        <button class="btn btn-sm btn-primary" @click="$emit('button_search')">Search</button>
+    </header>
 </template>
 
 <style lang="scss" scoped>

@@ -9,17 +9,29 @@ export default {
     AppHeader,
     AppMain
   },
+  created() {
+
+  },
   data() {
     return {
       store,
     }
-  }
+  },
+  methods: {
+    getSearchMovies() {
+      let apiSearchUrl = `${store.apiSearchMovie}?${store.apiToken}&query=${store.searchText}`
+
+      axios.get(apiSearchUrl).then((response) => {
+        store.moviesSearch = response.data.results
+      })
+    }
+  },
   
 }
 </script>
 
 <template>
-  <AppHeader />
+  <AppHeader @button_search="getSearchMovies" />
   <AppMain />
 </template>
 

@@ -5,6 +5,6 @@ export const store = reactive({
     // utilizzare il '?/& query=' per ricercare un film specifico tramite nome
     apiToken: 'api_key=3b5b5dcfa6bfdf7b0d812359db249350',
 
-    movieList: [],
+    moviesSearch: [],
     searchText: '', 
 })
