@@ -23,7 +23,7 @@ export default {
         <div class="container-fluid px-4">
             <div v-if="!store.flagSearch">
                 <div class="row flex-wrap gap-2 ">
-                    <div class="col-12 mt-5 ">MOVIES</div>
+                    <div class="col-12">MOVIES</div>
                     <AppSingleMovie v-for="(obj, index) in store.moviesSearch" :key="index" :movie="obj"/>
                 </div>
                 <div class="row flex-wrap gap-2 ">

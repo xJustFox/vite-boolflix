@@ -1,8 +1,11 @@
 <script>
+import { store  } from '../../store.js';
+
 export default {
     name:'AppSingleMovie',
     data() {
         return {
+            store,
         }
     },
     props: {
@@ -16,6 +19,9 @@ export default {
             }
 
             return `https://flagcdn.com/24x18/gb.png`
+        },
+        getImg(){
+            return `${store.apiImg}${this.movie.poster_path}`
         }
     }
 }
@@ -23,6 +29,7 @@ export default {
 
 <template lang="">
     <div class="col-2 my-br">
+        <div><img class="posterImg" :src="getImg" alt=""></div>
         <div><span class="fw-bold ">titolo:</span> {{movie.title}}</div>
         <div><span class="fw-bold ">titolo originale:</span> {{movie.original_title}}</div>
         <div><span class="fw-bold ">lingua originale: </span> <img class="" :src="getUrlFlag"></div>
