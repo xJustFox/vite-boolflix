@@ -1,4 +1,5 @@
 <script>
+import AppStar from './AppStar.vue';
 import { store  } from '../../store.js';
 
 export default {
@@ -7,6 +8,9 @@ export default {
         return {
             store,
         }
+    },
+    components: {
+        AppStar
     },
     props: {
         tv: Object,
@@ -34,7 +38,7 @@ export default {
         <div><span class="fw-bold ">titolo:</span> {{tv.name}}</div>
         <div><span class="fw-bold ">titolo originale:</span> {{tv.original_name}}</div>
         <div><span class="fw-bold ">lingua originale: </span> <img class="" :src="getUrlFlag"></div>
-        <div><span class="fw-bold ">voto:</span> {{tv.vote_average}}</div>
+        <AppStar :vote="tv.vote_average" />
     </div>
 </template>
 

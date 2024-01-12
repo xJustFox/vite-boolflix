@@ -1,4 +1,5 @@
 <script>
+import AppStar from './AppStar.vue';
 import { store  } from '../../store.js';
 
 export default {
@@ -7,6 +8,9 @@ export default {
         return {
             store,
         }
+    },
+    components: {
+        AppStar
     },
     props: {
         movie: Object,
@@ -22,7 +26,8 @@ export default {
         },
         getImg(){
             return `${store.apiImg}${this.movie.poster_path}`
-        }
+        },
+        
     }
 }
 </script>
@@ -33,7 +38,7 @@ export default {
         <div><span class="fw-bold ">titolo:</span> {{movie.title}}</div>
         <div><span class="fw-bold ">titolo originale:</span> {{movie.original_title}}</div>
         <div><span class="fw-bold ">lingua originale: </span> <img class="" :src="getUrlFlag"></div>
-        <div><span class="fw-bold ">voto:</span> {{movie.vote_average}}</div>
+        <AppStar :vote="movie.vote_average" />
     </div>
 </template>
 
