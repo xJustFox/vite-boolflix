@@ -13,9 +13,22 @@ export default {
 </script>
 
 <template lang="">
-    <header>
-        <input class=" form" placeholders="Movies name" v-model="store.searchText">
-        <button class="btn btn-sm btn-primary" @click="$emit('button_search')">Search</button>
+    <header class="px-4 py-1 bg-black ">
+        <div class="container-fluid ">
+            <div class="row justify-content-between align-items-center ">
+                <div class="col">
+                    <span class="logoTitle fs-1">
+                        BOOLFLIX
+                    </span>
+                        
+                </div>
+                <div class="col d-flex justify-content-end ">
+                    <input class="m-2 " v-model="store.searchText">
+                    <button class="btn btn-sm btn-primary m-2" @click="$emit('button_search')">Search</button>
+                </div>
+            </div>
+            
+        </div>
     </header>
 </template>
 

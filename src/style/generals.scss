@@ -9,4 +9,15 @@ body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    header{
+        .logoTitle{
+            font-family: 'Bebas Neue', sans-serif;
+            color: #E50914;
+        }
+    }
+}
+
+input{
+    outline: none;
 }
