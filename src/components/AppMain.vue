@@ -19,7 +19,7 @@ export default {
 </script>
 
 <template lang="">
-    <main class="pt-4">
+    <main class="py-4">
         <div class="container-fluid px-4">
             <div v-if="!store.flagSearch">
                 <div class="row flex-wrap gap-2 ">
