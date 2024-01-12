@@ -19,10 +19,11 @@ export default {
   },
   methods: {
     getSearchMovies() {
-      let apiSearchUrl = `${store.apiSearchMovie}?${store.apiToken}&query=${store.searchText}`
+      let apiSearchUrl = `${store.apiSearchMovie}?${store.apiToken}&query=${store.searchText}`;
 
       axios.get(apiSearchUrl).then((response) => {
-        store.moviesSearch = response.data.results
+        store.moviesSearch = response.data.results;
+        store.flagMoviesSearch = false;
       })
     }
   },

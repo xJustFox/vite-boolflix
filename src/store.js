@@ -6,5 +6,6 @@ export const store = reactive({
     apiToken: 'api_key=3b5b5dcfa6bfdf7b0d812359db249350',
 
     moviesSearch: [],
+    flagMoviesSearch: true,
     searchText: '', 
 })
