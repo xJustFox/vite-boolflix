@@ -1,5 +1,6 @@
 <script>
 import AppSingleMovie from './Main/AppSingleMovie.vue';
+import AppSingleTv from './Main/AppSingleTv.vue';
 import {store} from '../store.js';
 
 export default {
@@ -12,6 +13,7 @@ export default {
     },
     components: {
         AppSingleMovie,
+        AppSingleTv
     }
 }
 </script>
@@ -19,13 +21,14 @@ export default {
 <template lang="">
     <main class="pt-4">
         <div class="container-fluid px-4">
-            <div v-if="!store.flagMoviesSearch">
-                <div class="row justify-content-center  flex-wrap gap-2 ">
-                    <div class="col-12 ">MOVIES</div>
+            <div v-if="!store.flagSearch">
+                <div class="row flex-wrap gap-2 ">
+                    <div class="col-12 mt-5 ">MOVIES</div>
                     <AppSingleMovie v-for="(obj, index) in store.moviesSearch" :key="index" :movie="obj"/>
                 </div>
-                <div class="row justify-content-center  flex-wrap gap-2 ">
-                    <div class="col-12 ">TV SERIES</div>
+                <div class="row flex-wrap gap-2 ">
+                    <div class="col-12 mt-5 ">TV SERIES</div>
+                    <AppSingleTv v-for="(obj, index) in store.tvSearch" :key="index" :tv="obj"/>
                 </div>
             </div>
         </div>

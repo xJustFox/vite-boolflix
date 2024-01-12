@@ -22,7 +22,7 @@ export default {
 </script>
 
 <template lang="">
-    <div class="col-2">
+    <div class="col-2 my-br">
         <div><span class="fw-bold ">titolo:</span> {{movie.title}}</div>
         <div><span class="fw-bold ">titolo originale:</span> {{movie.original_title}}</div>
         <div><span class="fw-bold ">lingua originale: </span> <img class="" :src="getUrlFlag"></div>

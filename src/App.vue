@@ -18,12 +18,20 @@ export default {
     }
   },
   methods: {
-    getSearchMovies() {
-      let apiSearchUrl = `${store.apiSearchMovie}?${store.apiToken}&query=${store.searchText}`;
+    getSearch() {
+      let apiSearchMoviesUrl = `${store.apiSearchMovie}?${store.apiToken}&query=${store.searchText}`;
+      let apiSearchTvUrl = `${store.apiSearchTv}?${store.apiToken}&query=${store.searchText}`
 
-      axios.get(apiSearchUrl).then((response) => {
+      // Chiamata API Film
+      axios.get(apiSearchMoviesUrl).then((response) => {
         store.moviesSearch = response.data.results;
-        store.flagMoviesSearch = false;
+        store.flagSearch = false;
+      });
+
+      // Chiamata API Serie Tv
+      axios.get(apiSearchTvUrl).then((response) => {
+        store.tvSearch = response.data.results;
+        store.flagSearch = false;
       })
     }
   },
@@ -32,7 +40,7 @@ export default {
 </script>
 
 <template>
-  <AppHeader @button_search="getSearchMovies" />
+  <AppHeader @button_search="getSearch" />
   <AppMain />
 </template>
 
