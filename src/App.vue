@@ -21,17 +21,16 @@ export default {
     getSearch() {
       let apiSearchMoviesUrl = `${store.apiSearchMovie}?${store.apiToken}&query=${store.searchText}`;
       let apiSearchTvUrl = `${store.apiSearchTv}?${store.apiToken}&query=${store.searchText}`
-
       // Chiamata API Film
       axios.get(apiSearchMoviesUrl).then((response) => {
         store.moviesSearch = response.data.results;
-        store.flagSearch = false;
+        store.flagSearch = false
       });
 
       // Chiamata API Serie Tv
       axios.get(apiSearchTvUrl).then((response) => {
         store.tvSearch = response.data.results;
-        store.flagSearch = false;
+        store.flagSearch = false
       })
 
       store.searchText = '';

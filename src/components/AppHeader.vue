@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template lang="">
-    <header class="px-4 py-1 bg-black ">
+    <header class="px-4 py-1">
         
         <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
             
