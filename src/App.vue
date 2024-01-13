@@ -33,6 +33,8 @@ export default {
         store.tvSearch = response.data.results;
         store.flagSearch = false;
       })
+
+      store.searchText = '';
     }
   },
   

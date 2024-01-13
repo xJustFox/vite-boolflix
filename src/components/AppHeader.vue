@@ -59,56 +59,37 @@ export default {
                 </div>
 
                 <div class="d-flex" role="search">
-                    <input class="form-control form-control-sm  me-2" type="search" placeholder="Search" aria-label="Search" v-model="store.searchText">
-                    <button class="btn btn-sm btn-outline-success " type="submit" @click="$emit('button_search')">Search</button>
+                    <button class="my-btn" @click="$emit('button_search')"><i class="bi bi-search"></i></button>
+                    <input class=" my-input" type="text" placeholder="Search" v-model="store.searchText">
                 </div>
-
             </div>
         </nav>
-        <!-- <div class="container-fluid ">
-            <div class="row justify-content-between align-items-center ">
-                <div class="col">
-                    <span class="logoTitle fs-1">
-                        BOOLFLIX
-                    </span>
-                        
-                </div>
-                <div class="col d-flex justify-content-end align-items-center ">
-                        <ul class="list-unstyled d-flex m-0 text-white">
-                            <li>
-                                <i class="bi bi-search my-btn" @click="$emit('button_search')"></i>
-                                <input class="my-input" v-model="store.searchText">
-                            </li>
-                            <li>2</li>
-                            <li>3</li>
-                        </ul>
-                </div>
-            </div>
-            
-        </div> -->
     </header>
 </template>
 
 <style lang="scss" scoped>
-nav{
-    height: 60px;
+.my-btn{
+    padding: 3px 5px;
+    border: 1px solid white;
+    border-right: 0;
+}
+.my-input{
+    width: 150px;
+    border: 1px solid white;
+    border-left: 0;    
 }
 
+.my-btn,
+.my-input{
+    height: 30px;
+    background-color: black;
+}
+.my-input:focus {
+    outline: none;
+}
 .bi-search::before {
-    height: 20px;
-    vertical-align: bottom;
-    padding: 2px 5px;
+    vertical-align: top;
+    padding: 3px 0;
 }
-.my-input,
-.my-btn{
-    display: inline-block;
-    vertical-align: middle;
-    color: white;
-    height: 25px;
-    background-color: #201f1f;
-    border: 0;
-}
-.ul .li{
-    padding: 0 10px;
-}
+
 </style>
