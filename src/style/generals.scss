@@ -38,12 +38,11 @@ body{
         
         .my-row{
             display: flex;
-            // gap: 15px 10px;
+            overflow-y: scroll;
             
             .my-col{
                 height: clamp(200px, 400px, 600px);
                 padding: 5px;
-                // width: calc(100% / 6 - 10px);
                 
                 &:hover > .my-card{
                     cursor: pointer;
@@ -82,7 +81,14 @@ body{
                     }
                 }
             }
-        }
-        
+        }     
     }
+}
+
+.my-pointer{
+    cursor: pointer;
+}
+
+.my-default{
+    cursor: default;
 }

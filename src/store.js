@@ -56,5 +56,5 @@ export const store = reactive({
     // Funzione che restituisce l'immagine
     getImg(path) {
         return `${this.apiImg}${path}`
-    }
+    },
 })
