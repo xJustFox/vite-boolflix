@@ -24,7 +24,7 @@ export default {
                 </div>
                 <div class="col d-flex justify-content-end ">
                     <input class="m-2 " v-model="store.searchText">
-                    <button class="btn btn-sm btn-primary m-2" @click="$emit('button_search')">Search</button>
+                    <button class="m-2" @click="$emit('button_search')">Search</button>
                 </div>
             </div>
             

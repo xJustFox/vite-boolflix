@@ -16,42 +16,6 @@ export default {
         movie: Object,
         
     },
-    computed: {
-        getUrlFlag(){
-            if (this.movie.original_language == 'en') {
-                return `https://flagcdn.com/24x18/gb.png`;
-            }
-            else if (this.movie.original_language == 'uk'){
-                return `https://flagcdn.com/24x18/ua.png`;
-            }
-            else if (this.movie.original_language == 'ja'){
-                return `https://flagcdn.com/24x18/jp.png`;
-            }
-            else if (this.movie.original_language == 'ko'){
-                return `https://flagcdn.com/24x18/kr.png`;
-            }
-            else if (this.movie.original_language == 'zh'){
-                return `https://flagcdn.com/24x18/cn.png`;
-            }
-            else if (this.movie.original_language == 'hi'){
-                return `https://flagcdn.com/24x18/in.png`;
-            }
-            else if (this.movie.original_language == 'el'){
-                return `https://flagcdn.com/24x18/gr.png`;
-            }
-            else if (this.movie.original_language == 'cs'){
-                return `https://flagcdn.com/24x18/pt.png`;
-            }
-            else if (this.movie.original_language == 'da'){
-                return `https://flagcdn.com/24x18/dk.png`;
-            }
-            return `https://flagcdn.com/24x18/${this.movie.original_language}.png`;
-        },
-        getImg(){
-            return `${store.apiImg}${this.movie.poster_path}`
-        },
-        
-    }
 }
 </script>
 
@@ -59,12 +23,12 @@ export default {
     <div class="my-col">
         <div class="my-card my-br">
             <div class="front">
-                <img class="posterImg" :src="getImg" alt="">
+                <img class="posterImg" :src="store.getImg(movie.poster_path)" alt="">
             </div>
             <div class="back cardText">
-                <div><span class="fw-bold ">titolo:</span> {{movie.title}}</div>
-                <div><span class="fw-bold ">titolo originale:</span> {{movie.original_title}}</div>
-                <div><span class="fw-bold ">lingua originale: </span> <img class="" :src="getUrlFlag"></div>
+                <div><span class="fw-bold z-0">titolo:</span> "{{movie.title}}"</div>
+                <div><span class="fw-bold ">titolo originale:</span> "{{movie.original_title}}"</div>
+                <div><span class="fw-bold ">lingua originale: </span> <img class="" :src="store.getUrlFlag(movie.original_language)"></div>
                 <AppStar :vote="movie.vote_average" />
             </div>
         </div>

@@ -47,9 +47,8 @@ body{
                         width: 100%;
                         height: 100%;
                         position: absolute;
-                        bottom: 0;
                         overflow: hidden;
-                        backface-visibility: hidden;
+                        backface-visibility: visible;
                         .posterImg{
                             width: 100%;
                             height: 100%;
@@ -58,6 +57,7 @@ body{
                     
                     .back{
                         background-color: #191919c2;
+                        backface-visibility: hidden;
                         transform: rotateY(180deg);
                         color: white;
                     }
