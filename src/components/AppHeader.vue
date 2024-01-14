@@ -7,21 +7,28 @@ export default {
     data() {
         return {
             store,
+            scrollPosition: null
         }
+    },
+    mounted() {
+        window.addEventListener('scroll', this.updateScroll);
     },
     methods: {
         getHome() {
             store.flagProfile = false;
-            store.flagSearch= true;
+            store.flagSearch = true;
             store.moviesSearch = [];
             store.tvSearch = [];
+        },
+        updateScroll() {
+            this.scrollPosition = window.scrollY
         }
-    },
+    }
 }
 </script>
 
 <template lang="">
-    <header class="px-5 py-1">
+    <header class="px-5 py-1" :class="{change_color: scrollPosition > 50}">
         
         <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
             
@@ -125,8 +132,12 @@ export default {
 <style lang="scss" scoped>
 @use '../style/partials/variables' as *;
 
-header {
+.change_color {
     background-color: $my_black;
+}
+
+header {
+    background-color: rgba(20, 20, 20, 0.1);
     width: 100%;
     z-index: 1;
     position: fixed;
@@ -161,7 +172,7 @@ header {
             .my-btn,
             .my-input {
                 height: 30px;
-                background-color: $my_black;
+                background-color: rgba(20, 20, 20, 0.3);
             }
 
             .my-bell {
@@ -192,4 +203,5 @@ header {
             }
         }
     }
-}</style>
+}
+</style>

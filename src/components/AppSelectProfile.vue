@@ -44,6 +44,7 @@ export default {
 @use '../style/partials/variables' as *;
 
 main {
+    height: 100vh;
     min-width: 700px;
     padding: 90px;
     color: grey;

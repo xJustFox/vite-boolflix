@@ -2,6 +2,7 @@
 import AppSingleMovie from './Main/AppSingleMovie.vue';
 import AppSingleTv from './Main/AppSingleTv.vue';
 import AppPopularMovie from './Main/AppPopularMovie.vue';
+import AppJumbo from './Main/AppJumbo.vue';
 import { store } from '../store.js';
 
 export default {
@@ -15,23 +16,25 @@ export default {
     components: {
         AppSingleMovie,
         AppSingleTv,
-        AppPopularMovie
+        AppPopularMovie,
+        AppJumbo
     }
 }
 </script>
 
 <template lang="">
-    <main class="py-2">
+    <main>
         <div class="container-fluid p-0 ">
 
             <div v-show="store.flagSearch">
+                <AppJumbo/>
                 <h3 class="text-white m-0 px-5">I nostri migliori suggerimenti per te<i class="bi bi-arrow-right text-white px-2"></i></h3>
                 <div class="my-row px-5">
                     <AppPopularMovie v-for="(obj, index) in store.moviesPopular" :key="index" :popular="obj"/>
                 </div>
             </div>
 
-            <div v-if="!store.flagSearch">
+            <div class="mainSearch" v-if="!store.flagSearch">
 
                 <div class="px-5">
                     <div v-if="store.moviesSearch.length > 0" class="my-default">
@@ -64,11 +67,9 @@ export default {
 <style lang="scss" scoped>
 
 main {
-    width: 100%;
-    height: calc(100vh - 68px);
-    position: fixed;
-    bottom: 0;
-    overflow-y: scroll;
+    .mainSearch{
+        padding-top: 105px;
+    }
     .my-row {
         display: flex;
         overflow-x: scroll;
