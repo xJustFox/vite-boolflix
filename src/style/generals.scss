@@ -1,8 +1,9 @@
+@use './partials/variables' as *;
+
 @import url('../../node_modules/bootstrap/scss/bootstrap.scss');
 @import url('../../node_modules/bootstrap-icons/font/bootstrap-icons.scss');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 // font 'BoolFlix' => font-family: 'Bebas Neue', sans-serif;
-
 @import url('https://fonts.googleapis.com/css2?family=Martel+Sans&display=swap');
 // font for text => font-family: 'Martel Sans', sans-serif;
 
@@ -11,78 +12,17 @@ body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
 
-    header{
-        background-color: rgb(20, 20, 20);
-        width: 100%;
-        z-index: 1;
-        position: fixed;
-        top: 0;
-        nav{
-            height: 60px;
+main{
+    background-color: $my_black;
+    height: 100vh;
+}
 
-            .logoTitle{
-                font-family: 'Bebas Neue', sans-serif;
-                color: #E50914;
-                padding-right: 7px;
-            }
-        }
-    }
-    main{
-        background-color: rgb(20, 20, 20);
-        width: 100%;
-        height: calc(100vh - 68px);
-        position: fixed;
-        bottom: 0;
-        overflow-y: scroll;
-        
-        .my-row{
-            display: flex;
-            overflow-x: scroll;
-            
-            .my-col{
-                height: clamp(200px, 400px, 600px);
-                padding: 5px;
-                
-                &:hover > .my-card{
-                    cursor: pointer;
-                    transform: rotateY(180deg);
-                }
-                .my-card{
-                    object-fit: cover;
-                    width: 100%;
-                    height: 100%;
-                    border: 1px solid white;
-                    position: relative;
-                    transition: transform 1500ms;
-                    transform-style: preserve-3d;
-                    
-                    .front,
-                    .back{
-                        width: 100%;
-                        height: 100%;
-                        position: absolute;
-                        overflow: hidden;
-                        backface-visibility: visible;
-                        .posterImg{
-                            width: 100%;
-                            height: 100%;
-                        }
-                    }
-                    
-                    .back{
-                        background-color: #191919c2;
-                        backface-visibility: hidden;
-                        transform: rotateY(180deg);
-                        color: white;
-                    }
-                    .cardText{
-                        padding-left: 5px;
-                    }
-                }
-            }
-        }     
-    }
+.logoTitle{
+    font-family: 'Bebas Neue', sans-serif;
+    color: #E50914;
+    padding-right: 7px;
 }
 
 .my-pointer{

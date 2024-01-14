@@ -1,4 +1,5 @@
 <script>
+import AppSelectProfile from './components/AppSelectProfile.vue';
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue'
 import { store } from './store.js';
@@ -6,6 +7,7 @@ import axios from 'axios';
 
 export default {
   components:{
+    AppSelectProfile,
     AppHeader,
     AppMain
   },
@@ -48,8 +50,13 @@ export default {
 </script>
 
 <template>
-  <AppHeader @button_search="getSearch" />
-  <AppMain />
+  <div v-if="store.flagProfile">
+    <AppSelectProfile/>
+  </div>
+  <div v-else>
+    <AppHeader @button_search="getSearch" />
+    <AppMain />
+  </div>
 </template>
 
 <style lang="scss">

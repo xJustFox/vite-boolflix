@@ -3,10 +3,18 @@ import { store } from '../store.js';
 
 export default {
     name: 'AppHeader',
-    
+
     data() {
         return {
             store,
+        }
+    },
+    methods: {
+        getHome() {
+            store.flagProfile = false;
+            store.flagSearch= true;
+            store.moviesSearch = [];
+            store.tvSearch = [];
         }
     },
 }
@@ -19,9 +27,9 @@ export default {
             
             <div class="container-fluid p-0">
 
-                <!-- Left Contents -->
-                <div class="d-flex align-items-center">
-                    <a class=" text-decoration-none  logoTitle fs-2" href="#">BOOLFLIX</a>
+                <!-- Left Content -->
+                <div class="d-flex align-items-center left-content">
+                    <a class=" text-decoration-none  logoTitle fs-2" href="">BOOLFLIX</a>
                     
                     <div class="d-block d-lg-none">
                         <ul class="navbar-nav me-auto mb-lg-0">
@@ -41,11 +49,11 @@ export default {
                     </div>
                 </div>
                 
-                <!-- Middle Contents -->
+                <!-- Middle Content -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="">Home</a>
+                            <a class="nav-link active" aria-current="page" href="#" @click="getHome()">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Serie Tv</a>
@@ -62,8 +70,8 @@ export default {
                     </ul>     
                 </div>
 
-                <!-- Right Contents -->
-                <div class="d-flex" role="search">
+                <!-- Right Content -->
+                <div class="d-flex right-content" role="search">
                     <ul class=" list-unstyled m-0 d-flex">
                         <li class="d-flex">
                             <button class="my-btn" @click="$emit('button_search')"><i class="bi bi-search"></i></button>
@@ -88,19 +96,19 @@ export default {
                             <ul class="dropdown-menu dropdown-menu-end my-drop">
                                 <li><button class="dropdown-item" type="button">
                                     <img class="userImg" src="https://i.pinimg.com/564x/1b/a2/e6/1ba2e6d1d4874546c70c91f1024e17fb.jpg" alt="">
-                                    Profilo 1
-                                </button></li>
-                                <li><button class="dropdown-item" type="button">
-                                    <img class="userImg" src="https://i.pinimg.com/564x/b4/0b/51/b40b51418293936a6e0ad09ffa229cb7.jpg" alt="">
                                     Profilo 2
                                 </button></li>
                                 <li><button class="dropdown-item" type="button">
-                                    <img class="userImg" src="https://i.pinimg.com/564x/32/3e/cc/323ecca68b7105d23184e783b86b0c5a.jpg" alt="">
+                                    <img class="userImg" src="https://i.pinimg.com/564x/b4/0b/51/b40b51418293936a6e0ad09ffa229cb7.jpg" alt="">
                                     Profilo 3
                                 </button></li>
                                 <li><button class="dropdown-item" type="button">
-                                    <img class="userImg" src="https://i.pinimg.com/564x/61/54/76/61547625e01d8daf941aae3ffb37f653.jpg" alt="">
+                                    <img class="userImg" src="https://i.pinimg.com/564x/32/3e/cc/323ecca68b7105d23184e783b86b0c5a.jpg" alt="">
                                     Profilo 4
+                                </button></li>
+                                <li><button class="dropdown-item" type="button">
+                                    <img class="userImg" src="https://i.pinimg.com/564x/61/54/76/61547625e01d8daf941aae3ffb37f653.jpg" alt="">
+                                    Profilo 5
                                 </button></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><button class="dropdown-item" type="button">Esci da Boolflix</button></li>
@@ -115,50 +123,73 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.userImg{
-    width: 30px
-}
-.my-drop{
-    background-color: rgba(0, 0, 0, 0.88);
-}
-.my-btn{
-    padding: 3px 5px;
-    border: 1px solid white;
-    border-right: 0;
-}
-.my-input{
-    width: 150px;
-    border: 1px solid white;
-    border-left: 0;    
-}
+@use '../style/partials/variables' as *;
 
-.my-btn,
-.my-input{
-    height: 30px;
-    background-color: rgb(20, 20, 20);
-}
+header {
+    background-color: $my_black;
+    width: 100%;
+    z-index: 1;
+    position: fixed;
+    top: 0;
 
-.my-bell{
-    border: 0;
-    background: transparent;
-}
+    nav {
+        height: 60px;
 
-.my-input:focus {
-    outline: none;
-}
-.bi-search::before {
-    vertical-align: top;
-    padding: 3px 0;
-}
-.bi-bell::before {
-    position: relative;
-    bottom: 3px;
-    padding: 4px 0;
-    font-size: x-large; 
-}
-.bi-caret-down-fill::before {
-    padding: 5px;
-    padding-left: 10px;
-    font-size: x-small;
-  }
-</style>
+        .left-content {
+            .my-drop {
+                background-color: rgba(0, 0, 0, 0.88);
+            }
+        }
+
+        .right-content {
+            .userImg {
+                width: 30px
+            }
+
+            .my-btn {
+                padding: 3px 5px;
+                border: 1px solid white;
+                border-right: 0;
+            }
+
+            .my-input {
+                width: 150px;
+                border: 1px solid white;
+                border-left: 0;
+            }
+
+            .my-btn,
+            .my-input {
+                height: 30px;
+                background-color: $my_black;
+            }
+
+            .my-bell {
+                border: 0;
+                background: transparent;
+            }
+
+            .my-input:focus {
+                outline: none;
+            }
+
+            .bi-search::before {
+                vertical-align: top;
+                padding: 3px 0;
+            }
+
+            .bi-bell::before {
+                position: relative;
+                bottom: 3px;
+                padding: 4px 0;
+                font-size: x-large;
+            }
+
+            .bi-caret-down-fill::before {
+                padding: 5px;
+                padding-left: 10px;
+                font-size: x-small;
+            }
+        }
+    }
+}</style>

@@ -2,7 +2,7 @@
 import AppSingleMovie from './Main/AppSingleMovie.vue';
 import AppSingleTv from './Main/AppSingleTv.vue';
 import AppPopularMovie from './Main/AppPopularMovie.vue';
-import {store} from '../store.js';
+import { store } from '../store.js';
 
 export default {
     name: 'AppMain',
@@ -62,8 +62,16 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.bi-arrow-right::before {
-    font-size: x-large;
-  }
-    
+
+main {
+    width: 100%;
+    height: calc(100vh - 68px);
+    position: fixed;
+    bottom: 0;
+    overflow-y: scroll;
+    .my-row {
+        display: flex;
+        overflow-x: scroll;
+    }
+}
 </style>

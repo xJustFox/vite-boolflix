@@ -1,0 +1,46 @@
+.my-col {
+    height: clamp(200px, 400px, 600px);
+    padding: 5px;
+
+    .bi-arrow-right::before {
+        font-size: x-large;
+    }
+
+    &:hover>.my-card {
+        cursor: pointer;
+        transform: rotateY(180deg);
+    }
+
+    .my-card {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        border: 1px solid white;
+        position: relative;
+        transition: transform 1500ms;
+        transform-style: preserve-3d;
+
+        .front,
+        .back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            overflow: hidden;
+            backface-visibility: visible;
+
+            .posterImg {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .back {
+            padding: 10px;
+            overflow-y: scroll;
+            background-color: #191919c2;
+            backface-visibility: hidden;
+            transform: rotateY(180deg);
+            color: white;
+        }
+    }
+}
