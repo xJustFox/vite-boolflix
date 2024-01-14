@@ -5,9 +5,11 @@ export const store = reactive({
     apiSearchMovie: 'https://api.themoviedb.org/3/search/movie',
     // utilizzare il '?/& query=' per ricercare una serie tv specifica tramite nome
     apiSearchTv: 'https://api.themoviedb.org/3/search/tv',
+    apiPopularMovie: 'https://api.themoviedb.org/3/movie/popular',
     apiImg: 'https://image.tmdb.org/t/p/w500',
     apiToken: 'api_key=3b5b5dcfa6bfdf7b0d812359db249350',
 
+    moviesPopular: [],
     moviesSearch: [],
     tvSearch: [],
     flagSearch: true,

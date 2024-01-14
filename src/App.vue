@@ -10,7 +10,7 @@ export default {
     AppMain
   },
   created() {
-
+    this.getPopular()
   },
   data() {
     return {
@@ -18,6 +18,13 @@ export default {
     }
   },
   methods: {
+    getPopular() {
+      let apiPopularMoviesUrl = `${store.apiPopularMovie}?${store.apiToken}`;
+      // Chiamata API Film
+      axios.get(apiPopularMoviesUrl).then((response) => {
+        store.moviesPopular = response.data.results;
+      });
+    },
     getSearch() {
       let apiSearchMoviesUrl = `${store.apiSearchMovie}?${store.apiToken}&query=${store.searchText}`;
       let apiSearchTvUrl = `${store.apiSearchTv}?${store.apiToken}&query=${store.searchText}`

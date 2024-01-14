@@ -1,6 +1,7 @@
 <script>
 import AppSingleMovie from './Main/AppSingleMovie.vue';
 import AppSingleTv from './Main/AppSingleTv.vue';
+import AppPopularMovie from './Main/AppPopularMovie.vue';
 import {store} from '../store.js';
 
 export default {
@@ -13,7 +14,8 @@ export default {
     },
     components: {
         AppSingleMovie,
-        AppSingleTv
+        AppSingleTv,
+        AppPopularMovie
     }
 }
 </script>
@@ -21,13 +23,17 @@ export default {
 <template lang="">
     <main class="py-2">
         <div class="container-fluid p-0 ">
-            <div class="px-5" v-show="store.flagSearch">
-                <h3 class="text-white m-0">Cerca il nome di un film o di una serie tv...</h3>
+
+            <div v-show="store.flagSearch">
+                <h3 class="text-white m-0 px-5">I nostri migliori suggerimenti per te<i class="bi bi-arrow-right text-white px-2"></i></h3>
+                <div class="my-row px-5">
+                    <AppPopularMovie v-for="(obj, index) in store.moviesPopular" :key="index" :popular="obj"/>
+                </div>
             </div>
 
             <div v-if="!store.flagSearch">
 
-                <div  class="px-5">
+                <div class="px-5">
                     <div v-if="store.moviesSearch.length > 0" class="my-default">
                         <h3  class="text-white m-0">Film<i class="bi bi-arrow-right text-white px-2"></i></h3>
                     </div>
