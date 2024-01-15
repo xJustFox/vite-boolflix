@@ -13,6 +13,8 @@ export default {
   },
   created() {
     this.getPopular()
+    this.getTop()
+    this.getAdviced()
   },
   data() {
     return {
@@ -20,9 +22,23 @@ export default {
     }
   },
   methods: {
+    getAdviced(){
+      let apiAdvicedTvUrl = `${store.apiAdvicedTv}?${store.apiToken}`;
+      // Chiamata API Adviced Series TV
+      axios.get(apiAdvicedTvUrl).then((response) => {
+        store.tvAdviced = response.data.results;
+      });
+    },
+    getTop(){
+      let apiTopMoviesUrl = `${store.apiTopMovie}?${store.apiToken}`;
+      // Chiamata API Top Film
+      axios.get(apiTopMoviesUrl).then((response) => {
+        store.moviesTop = response.data.results;
+      });
+    },
     getPopular() {
       let apiPopularMoviesUrl = `${store.apiPopularMovie}?${store.apiToken}`;
-      // Chiamata API Film
+      // Chiamata API Popular Film
       axios.get(apiPopularMoviesUrl).then((response) => {
         store.moviesPopular = response.data.results;
       });
