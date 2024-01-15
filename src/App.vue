@@ -34,14 +34,12 @@ export default {
       store.getCallApi(store.apiPopularMovie, store.moviesPopular, 'movie');
     },
     getSearch() {
-      let apiSearchMoviesUrl = `${store.apiSearchMovie}?${store.apiToken}&query=${store.searchText}&${store.apiLanguage}`;
-      let apiSearchTvUrl = `${store.apiSearchTv}?${store.apiToken}&query=${store.searchText}&${store.apiLanguage}`
       store.tvSearch = []; 
       store.moviesSearch = [];
-
+      
       // Chiamata API Film
       store.getCallApi(store.apiSearchMovie, store.moviesSearch, 'movieSrc');
-
+      
       // Chiamata API Tv Serie 
       store.getCallApi(store.apiSearchTv, store.tvSearch, 'tvSrc');
       

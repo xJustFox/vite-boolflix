@@ -29,7 +29,7 @@ export default {
 
 <template lang="">
     <div :class="store.flagSearch == false ? 'my-bgBlack' : '' ">
-        <header class="px-5 py-1" :class="{change_color: scrollPosition > 50}" >   
+        <header class="px-5 py-1" :class="{change_color: scrollPosition > 100}" >   
             <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
                 
                 <div class="container-fluid p-0">
@@ -38,10 +38,11 @@ export default {
                     <div class="d-flex align-items-center left-content">
                         <a class=" text-decoration-none  logoTitle fs-2" href="">BOOLFLIX</a>
                         
+                        <!-- Middle Content < lg -->
                         <div class="d-block d-lg-none">
                             <ul class="navbar-nav me-auto mb-lg-0">
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle px-1 text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle px-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                       Sfoglia
                                     </a>
                                     <ul class="dropdown-menu position-absolute my-drop">
@@ -58,7 +59,7 @@ export default {
                     
                     <!-- Middle Content -->
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-menu">
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#" @click="getHome()">Home</a>
                             </li>
@@ -79,27 +80,36 @@ export default {
     
                     <!-- Right Content -->
                     <div class="d-flex right-content" role="search">
-                        <ul class=" list-unstyled m-0 d-flex">
-                            <li class="d-flex">
-                                <button class="my-btn" @click="$emit('button_search')"><i class="bi bi-search"></i></button>
-                                <input class=" my-input" type="text" placeholder="Search" v-model="store.searchText">
+                        <ul class=" list-unstyled m-0 d-flex ">
+
+                            <!-- Search Bar -->
+                            <li class="searchBar">
+                                <div class="my-btn" :class="!store.searchAppear ? 'my-btn-active' : ''">
+                                    <i class="bi bi-search my-pointer" @click="store.searchAppear = !store.searchAppear"></i>
+                                    <input class=" my-input" type="text" placeholder="Search" v-model="store.searchText" @keyup.enter="$emit('button_search')">
+                                </div>
                             </li>
-                            <li>
-                                <button type="button" class="my-bell mx-3" data-bs-toggle="dropdown" aria-expanded="false">
+
+                            <!-- Bell -->
+                            <li class="mx-3">
+                                <div class="my-bell my-pointer" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-bell"></i>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end my-drop">
+                                </div>
+                                <!-- Menù Bell -->
+                                <ul class="dropdown-menu dropdown-menu-end my-drop-bell my-drop">
                                     <li><button class="dropdown-item" type="button">Action</button></li>
                                     <li><button class="dropdown-item" type="button">Another action</button></li>
                                     <li><button class="dropdown-item" type="button">Something else here</button></li>
                                 </ul>
                             </li>
                             <li>
+                                <!-- Icon Profile -->
                                 <div class="text-white my-pointer" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img class="userImg" src="https://i.pinimg.com/originals/d7/19/6a/d7196adc7c4f353d52235c5e6ed12e65.jpg" alt="">
                                     <i class="bi bi-caret-down-fill text-white"></i>
                                 </div>
-    
+                                
+                                <!-- Menù Icon Profile -->
                                 <ul class="dropdown-menu dropdown-menu-end my-drop">
                                     <li><button class="dropdown-item" type="button">
                                         <img class="userImg" src="https://i.pinimg.com/564x/1b/a2/e6/1ba2e6d1d4874546c70c91f1024e17fb.jpg" alt="">
@@ -147,7 +157,8 @@ export default {
 }
 
 header {
-    background-color: rgba(20, 20, 20, 0.1);
+    transition: 0.3s linear;
+    background: linear-gradient(0deg, rgba(38,38,38,0.08) 0%, rgba(38,38,38,0.7483368347338936) 100%);
     width: 100%;
     z-index: 1;
     position: fixed;
@@ -158,7 +169,7 @@ header {
 
         .left-content {
             .my-drop {
-                background-color: rgba(0, 0, 0, 0.88);
+                background-color: transparent;
             }
         }
 
@@ -167,48 +178,74 @@ header {
                 width: 30px
             }
 
-            .my-btn {
-                padding: 3px 5px;
-                border: 1px solid white;
-                border-right: 0;
-            }
+            .searchBar{
+                max-width: 250px;
+                height: 29px;
+                .my-input {
+                    height: 29px;
+                    width: 0;
+                    border: 0;
+                    margin-left: 5px;
+                    cursor: default;
+                }
 
-            .my-input {
-                width: 150px;
-                border: 1px solid white;
-                border-left: 0;
-            }
-
-            .my-btn,
-            .my-input {
-                height: 30px;
-                background-color: rgba(20, 20, 20, 0.3);
+                .my-btn,
+                .my-input {
+                    border: 0;
+                    background-color: transparent;
+                }
+                
+                .my-btn-active{
+                    padding: 2px 5px;
+                    border: 1px solid white;
+                    background-color: $my_black;
+                    .my-input{
+                        cursor: text;
+                        transition: 0.3s linear width;
+                        width: 200px;
+                    }
+                    .bi-search::before {
+                        padding-top: 0;
+                    }
+                }
+                
+                .my-input:focus {
+                    outline: none;
+                }
+    
+                .bi-search::before {
+                    vertical-align: middle;
+                    font-size: x-large;
+                    padding-top: 3px;
+                }
             }
 
             .my-bell {
+                color: #fff;
                 border: 0;
                 background: transparent;
             }
-
-            .my-input:focus {
-                outline: none;
+            .bi-search{
+                color: #fff;
             }
 
-            .bi-search::before {
-                vertical-align: top;
-                padding: 3px 0;
+            .my-drop-bell{
+                right: 60px;
             }
+
 
             .bi-bell::before {
-                position: relative;
-                bottom: 3px;
-                padding: 4px 0;
                 font-size: x-large;
+                vertical-align: middle;
+                padding-top: 3px;
+            }
+            .bi-search:hover, 
+            .bi-bell:hover{
+                color: rgb(226, 225, 225);
             }
 
             .bi-caret-down-fill::before {
-                padding: 5px;
-                padding-left: 10px;
+                padding-left: 5px;
                 font-size: x-small;
             }
         }

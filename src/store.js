@@ -22,6 +22,7 @@ export const store = reactive({
     tvSearch: [],
     flagSearch: true,
     flagProfile: true,
+    searchAppear: true,
     searchText: '',
 
     profileList: [

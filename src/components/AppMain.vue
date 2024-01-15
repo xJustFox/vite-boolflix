@@ -5,7 +5,6 @@ import { store } from '../store.js';
 
 export default {
     name: 'AppMain',
-
     data() {
         return {
             store,
@@ -51,6 +50,7 @@ export default {
                 </div>
             </div>
 
+            <!-- Search Main Page -->
             <div class="mainSearch" v-else>
 
                 <!-- Films title -->
@@ -84,23 +84,23 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
-
 main {
-    .containerFilms{
+    .containerFilms {
         position: relative;
         bottom: 100px;
 
-        .my-pt{
+        .my-pt {
             margin-top: 65px
         }
     }
-    .mainSearch{
+
+    .mainSearch {
         height: 100vh;
         overflow-y: scroll;
         padding-top: 80px;
         padding-bottom: 30px;
     }
+
     .my-row {
         display: flex;
         overflow-x: scroll;
