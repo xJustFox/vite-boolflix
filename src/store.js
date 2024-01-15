@@ -1,18 +1,21 @@
 import { reactive } from "vue";
+import axios from "axios";
 
 export const store = reactive({
+    apiAdvicedTv: 'https://api.themoviedb.org/3/tv/67744/similar',
+    apiPopularMovie: 'https://api.themoviedb.org/3/tv/popular',
+    apiTopMovie: 'https://api.themoviedb.org/3/movie/top_rated',
+
     // utilizzare il '?/& query=' per ricercare un film specifico tramite nome
     apiSearchMovie: 'https://api.themoviedb.org/3/search/movie',
     // utilizzare il '?/& query=' per ricercare una serie tv specifica tramite nome
     apiSearchTv: 'https://api.themoviedb.org/3/search/tv',
-    apiPopularMovie: 'https://api.themoviedb.org/3/movie/popular',
-    apiTopMovie: 'https://api.themoviedb.org/3/movie/top_rated',
-    apiAdvicedTv: 'https://api.themoviedb.org/3/tv/67744/similar',
 
     apiImg: 'https://image.tmdb.org/t/p/w500',
     apiToken: 'api_key=3b5b5dcfa6bfdf7b0d812359db249350',
+    apiLanguage: 'language=it-IT',
 
-    tvAdviced:[],
+    tvAdviced: [],
     moviesPopular: [],
     moviesTop: [],
     moviesSearch: [],
@@ -48,8 +51,7 @@ export const store = reactive({
     // Funzione che sostituisce l'original_language con quello corretto e aggiunge la bandiera
     getUrlFlag(language) {
         let urlImg;
-
-        switch (language) {
+        switch (language.toLowerCase()) {
             case 'en':
                 urlImg = `https://flagcdn.com/24x18/gb.png`;
                 break;
@@ -78,14 +80,58 @@ export const store = reactive({
                 urlImg = `https://flagcdn.com/24x18/dk.png`;
                 break;
             default:
-                urlImg = `https://flagcdn.com/24x18/${language}.png`;
+                urlImg = `https://flagcdn.com/24x18/${language.toLowerCase()}.png`;
                 break;
         }
 
         return urlImg
     },
+    // Funzione che chiama l'Api
+    getCallApi(url, mainArr, media) {
+        let apiUrl;
+
+        if (media == 'movieSrc' || media == 'tvSrc') {
+            apiUrl  = `${url}?${this.apiToken}&query=${this.searchText}&${this.apiLanguage}`;
+        }
+        else{
+            apiUrl  = `${url}?${this.apiToken}&${this.apiLanguage}`;
+        }
+
+        axios.get(apiUrl).then((response) => {
+            let arr = response.data.results;
+
+            if (media == 'tv' || media == 'tvSrc') {
+                arr.forEach(element => {
+                    let obj = {
+                        name: element.name,
+                        original_name: element.original_name,
+                        img: element.poster_path,
+                        language: element.origin_country[0],
+                        vote: element.vote_average,
+                        overview: element.overview,
+                    }
+    
+                    return mainArr.push(obj);
+                });
+            }
+            else {
+                arr.forEach(element => {
+                    let obj = {
+                        name: element.title,
+                        original_name: element.original_title,
+                        img: element.poster_path,
+                        language: element.original_language,
+                        vote: element.vote_average,
+                        overview: element.overview,
+                    }
+                    
+                    return mainArr.push(obj);
+                });
+            }
+        });
+    },
     // Funzione che restituisce l'immagine
     getImg(path) {
         return `${this.apiImg}${path}`
-    },
+    }
 })

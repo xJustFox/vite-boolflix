@@ -3,18 +3,17 @@ import AppSelectProfile from './components/AppSelectProfile.vue';
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue'
 import { store } from './store.js';
-import axios from 'axios';
 
 export default {
-  components:{
+  components: {
     AppSelectProfile,
     AppHeader,
     AppMain
   },
   created() {
-    this.getPopular()
-    this.getTop()
     this.getAdviced()
+    this.getTop()
+    this.getPopular()
   },
   data() {
     return {
@@ -23,51 +22,40 @@ export default {
   },
   methods: {
     getAdviced(){
-      let apiAdvicedTvUrl = `${store.apiAdvicedTv}?${store.apiToken}`;
-      // Chiamata API Adviced Series TV
-      axios.get(apiAdvicedTvUrl).then((response) => {
-        store.tvAdviced = response.data.results;
-      });
+      // Chiamata API Adviced Tv Series 
+      store.getCallApi(store.apiAdvicedTv, store.tvAdviced, 'tv');
     },
     getTop(){
-      let apiTopMoviesUrl = `${store.apiTopMovie}?${store.apiToken}`;
       // Chiamata API Top Film
-      axios.get(apiTopMoviesUrl).then((response) => {
-        store.moviesTop = response.data.results;
-      });
+      store.getCallApi(store.apiTopMovie, store.moviesTop, 'movie');
     },
     getPopular() {
-      let apiPopularMoviesUrl = `${store.apiPopularMovie}?${store.apiToken}`;
       // Chiamata API Popular Film
-      axios.get(apiPopularMoviesUrl).then((response) => {
-        store.moviesPopular = response.data.results;
-      });
+      store.getCallApi(store.apiPopularMovie, store.moviesPopular, 'movie');
     },
     getSearch() {
-      let apiSearchMoviesUrl = `${store.apiSearchMovie}?${store.apiToken}&query=${store.searchText}`;
-      let apiSearchTvUrl = `${store.apiSearchTv}?${store.apiToken}&query=${store.searchText}`
+      let apiSearchMoviesUrl = `${store.apiSearchMovie}?${store.apiToken}&query=${store.searchText}&${store.apiLanguage}`;
+      let apiSearchTvUrl = `${store.apiSearchTv}?${store.apiToken}&query=${store.searchText}&${store.apiLanguage}`
+      store.tvSearch = []; 
+      store.moviesSearch = [];
+
       // Chiamata API Film
-      axios.get(apiSearchMoviesUrl).then((response) => {
-        store.moviesSearch = response.data.results;
-        store.flagSearch = false
-      });
+      store.getCallApi(store.apiSearchMovie, store.moviesSearch, 'movieSrc');
 
-      // Chiamata API Serie Tv
-      axios.get(apiSearchTvUrl).then((response) => {
-        store.tvSearch = response.data.results;
-        store.flagSearch = false
-      })
-
+      // Chiamata API Tv Serie 
+      store.getCallApi(store.apiSearchTv, store.tvSearch, 'tvSrc');
+      
+      store.flagSearch = false
       store.searchText = '';
     }
   },
-  
+
 }
 </script>
 
 <template>
   <div v-if="store.flagProfile">
-    <AppSelectProfile/>
+    <AppSelectProfile />
   </div>
   <div v-else>
     <AppHeader @button_search="getSearch" />

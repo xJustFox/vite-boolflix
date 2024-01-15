@@ -48,7 +48,6 @@ main {
     min-width: 700px;
     padding: 90px;
     color: grey;
-    overflow-y: scroll;
 
     .title {
         font-size: 70px;
