@@ -32,7 +32,7 @@ export default {
     },
     getPopular() {
       // Chiamata API Popular Film
-      this.getCallApi(store.apiPopularMovie, store.moviesPopular, 'movie');
+      this.getCallApi(store.apiPopularMovie, store.moviesPopular, 'tv');
     },
     getSearch() {
       store.tvSearch = [];
