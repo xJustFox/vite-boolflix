@@ -71,7 +71,7 @@ export default {
             <div class="back">
                 <div><span class="fw-bold ">Titolo:</span> "{{media.name}}"</div>
                 <div><span class="fw-bold ">Titolo originale:</span> "{{media.original_name}}"</div>
-                <div><span class="fw-bold ">Lingua originale: </span> <img :src="this.getUrlFlag(media.language)" :alt="media.original_name"></div>
+                <div><span class="fw-bold ">Lingua originale: </span> <img :src="getUrlFlag(media.language)" :alt="media.original_name"></div>
                 <AppStar :vote="media.vote" />
                 <div><span class="fw-bold ">Descrizione:</span> {{media.overview}}</div>
             </div>

@@ -6,7 +6,7 @@ export default {
     data() {
         return {
             store,
-            five: ['1','2','3','4','5'],
+            five: [1,2,3,4,5],
         }
     },
     props: {

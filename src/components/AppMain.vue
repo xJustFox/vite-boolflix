@@ -87,7 +87,7 @@ export default {
 main {
     .containerFilms {
         position: relative;
-        bottom: 100px;
+        bottom: 10vh;
 
         .my-pt {
             margin-top: 65px
@@ -104,6 +104,21 @@ main {
     .my-row {
         display: flex;
         overflow-x: scroll;
+
+        /* ===== Scrollbar CSS ===== */
+        &::-webkit-scrollbar {
+            width: 5px;
+            height: 10px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #232323;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #151414;
+            border: 0px dotted #ffffff;
+        }
     }
 }
 </style>

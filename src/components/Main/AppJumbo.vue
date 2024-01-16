@@ -7,7 +7,7 @@ export default {
 
 <template lang="">
     <div class="jumbo position-relative ">
-        <div class="h-100  content text-white">
+        <div class="content text-white">
             <div>
                 <img src="https://occ-0-173-2581.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABX_vB7HwidGrPts5ivwR-Ab6oaf5DPolBPGqCfbAMtLwxR2f6_HdxjkIgyqkhQZ1fOXRkcnWEN31itPyc_y02IoDC81zxUryo_gY1nn1pd-l.webp?r=642" alt="">
                 <div class="py-4 px-2  ">Mentre una minaccia tossica incombe sulla città corrotta, Bruce Wayne entra in conflitto con una lega di assassini e deve affrontare non solo i propri demoni.</div>          
@@ -30,8 +30,8 @@ export default {
     .content {
         width: 30%;
         padding-left: 40px;
-        position: absolute;
-        top: 30vh;
+        position: relative;
+        top: 30%;
 
 
         .my-btn,
