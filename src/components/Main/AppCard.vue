@@ -63,7 +63,7 @@ export default {
 </script>
 
 <template lang="">
-    <div class="col-6 col-sm-4 col-lg-3 col-xl-2 col-xxl-2 my-col">
+    <div class="my-col">
         <div class="my-card">
             <div class="front">
                 <img class="posterImg" :src="media.img ? `${getImg(media.img)}` : 'https://dessertdivine.com.au/wp-content/uploads/2022/02/Image-Not-Available.png'" alt="">

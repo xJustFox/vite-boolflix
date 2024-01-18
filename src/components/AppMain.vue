@@ -1,6 +1,6 @@
 <script>
-import AppCard from './Main/AppCard.vue';
 import AppJumbo from './Main/AppJumbo.vue';
+import AppCarousel from './Main/AppCarousel.vue';
 import { store } from '../store.js';
 
 export default {
@@ -12,8 +12,8 @@ export default {
     },
     components: {
         AppJumbo,
-        AppCard,
-    }
+        AppCarousel,
+    },
 }
 </script>
 
@@ -27,25 +27,22 @@ export default {
                 <AppJumbo/>
                 <div class="containerFilms">
 
+                    <!-- Adviced Tv Series -->
                     <h3 class="text-white m-0 px-5">Perchè hai guardato Mind Hunter<i class="bi bi-arrow-right text-white px-2"></i></h3>
-                    <div class="my-row px-5">
-                        <AppCard v-for="(obj, index) in store.tvAdviced" :key="index" :media="obj"/>
-                    </div>
+
+                    <AppCarousel :arrayMedia="store.tvAdviced" />
                     
                     <!-- Popular Films -->
                     <div class="my-pt">
                         <h3 class="text-white m-0 px-5">I nostri migliori suggerimenti per te<i class="bi bi-arrow-right text-white px-2"></i></h3>
-                        <div class="my-row px-5">
-                            <AppCard v-for="(obj, index) in store.moviesPopular" :key="index" :media="obj"/>
-                        </div>
+                        
+                        <AppCarousel :arrayMedia="store.moviesPopular" />
                     </div>
     
                     <!-- Top Rated Films -->
                     <div class="my-pt">
                         <h3 class="text-white m-0 px-5">I titoli del momento<i class="bi bi-arrow-right text-white px-2"></i></h3>
-                        <div class="my-row px-5">
-                            <AppCard v-for="(obj, index) in store.moviesTop" :key="index" :media="obj"/>
-                        </div>
+                        <AppCarousel :arrayMedia="store.moviesTop" />
                     </div>
                 </div>
             </div>
@@ -62,9 +59,7 @@ export default {
                 </div>
 
                 <!-- Films -->
-                <div class="my-row px-5">
-                    <AppCard v-for="(obj, index) in store.moviesSearch" :key="index" :media="obj"/>
-                </div>
+                <AppCarousel :arrayMedia="store.moviesSearch" />
 
                 <!-- Tv Series title -->
                 <div class="mt-5 px-5">
@@ -75,9 +70,7 @@ export default {
                 </div>
 
                 <!-- Tv Series -->
-                <div class="my-row px-5">
-                    <AppCard v-for="(obj, index) in store.tvSearch" :key="index" :media="obj"/>
-                </div>
+                <AppCarousel :arrayMedia="store.tvSearch" />
             </div>
         </div>
     </main>
@@ -104,21 +97,6 @@ main {
     .my-row {
         display: flex;
         overflow-x: scroll;
-
-        /* ===== Scrollbar CSS ===== */
-        &::-webkit-scrollbar {
-            width: 5px;
-            height: 10px;
-        }
-
-        &::-webkit-scrollbar-track {
-            background: #232323;
-        }
-
-        &::-webkit-scrollbar-thumb {
-            background-color: #151414;
-            border: 0px dotted #ffffff;
-        }
     }
 }
 </style>
