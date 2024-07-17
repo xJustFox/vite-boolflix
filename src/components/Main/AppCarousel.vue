@@ -55,7 +55,7 @@ export default {
 <template lang="">
     <div class="px-5 position-relative w-100">
 
-        <Carousel ref="carousel"  :settings :wrapAround="true" :breakpoints="breakpoints">
+        <Carousel ref="carousel" :wrapAround="true" :breakpoints="breakpoints">
             <Slide v-for="slide in arrayMedia" :key="slide">
                 <AppCard :media="slide"/>
             </Slide>
@@ -71,9 +71,8 @@ export default {
 .btnPrev {
     position: absolute;
     top: 50%;
-    border: 1px solid white;
-    border-radius: 100%;
-    background-color: rgb(28, 28, 28);
+    border: 1px solid gray;
+    background-color: rgba(44, 44, 44, 0.506);
 
     &:hover {
         cursor: pointer;
